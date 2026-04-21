@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting0(0);
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,17 +17,24 @@ if (isset($_POST["sbgan"]))
 ?>
 <body>
 <form  method="post">
-<table>
+<table> 
 <tr>
 	<td>Gán giá trị cho biến session: </td>
     <td><input type="text" name="txtthongtin"></td>
-    <td><input type="submit" value="Gán"></td>
+    <td><input type="submit" value="Gán" name="sbgan"></td>
 </tr>
 </table>
 </form>
 <h3>
 <?php
-if($_SESSION[)
+if($_SESSION["ThongTin"])
+{
+    echo "Giá trị biến session là:: ".$_SESSION["ThongTin"]." <a href='logout.php'>Đăng xuất</a>";
+}
+else
+{
+    echo "Giá trị session chưa được gán";
+}
 ?>
 </h3>
 </body>
