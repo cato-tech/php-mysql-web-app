@@ -1,18 +1,29 @@
 <?php
-include("classtmdt/clstmdt.php");
-$p= new csdltmdt();
-$congty = $p->xuatdulieu("select * from congty order by tencty asc");
+    include("classtmdt/clstmdt.php");
+    $p = new csdltmdt();
+    $congty = $p->xuatdulieu("SELECT * FROM congty ORDER BY tencty ASC");
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
-
+<html>
+<head></head>
 <body>
-<table>
+<table width="500" border="1" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="49" align="center" valign="middle"><strong>STT</strong></td>
+        <td width="112" align="center" valign="middle"><strong>TÊN CÔNG TY</strong></td>
+        <td width="205" align="center" valign="middle"><strong>ĐỊA CHỈ</strong></td>
+        <td width="124" align="center" valign="middle"><strong>ĐIỆN THOẠI</strong></td>
+    </tr>
+    <?php
+    for($i=0; $i<count($congty); $i++)
+    {
+        echo '<tr>
+        <td>'.($i+1).'</td>
+        <td>'.$congty[$i]['tencty'].'</td>
+        <td>'.$congty[$i]['diachi'].'</td>
+        <td>'.$congty[$i]['dienthoai'].'</td>
+        </tr>';
+    }
+    ?>
 </table>
-
 </body>
 </html>
