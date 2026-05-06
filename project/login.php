@@ -57,6 +57,17 @@ if (isset($_POST['login'])) {
                 <p>Chưa có tài khoản? <a href="dangky.php">Đăng ký ngay</a></p>
                 <p><a href="index.php">← Quay về trang chủ</a></p>
             </div>
+
+            <!-- LINK ĐĂNG NHẬP ADMIN -->
+            <div style="margin-top:18px; padding-top:14px; border-top:1px solid #ddd; text-align:center;">
+                <p style="font-size:13px; color:#888; margin-bottom:6px;">Bạn là quản trị viên?</p>
+                <a href="admin/admin_login.php"
+                   style="display:inline-block; padding:8px 20px; background:#2c3e50; color:white;
+                          border-radius:5px; text-decoration:none; font-size:13px; font-weight:bold;">
+                    ⚙️ Đăng nhập Admin
+                </a>
+            </div>
+
         </div>
     </div>
 

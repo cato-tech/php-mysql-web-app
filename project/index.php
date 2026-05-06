@@ -1,12 +1,13 @@
 <?php
-session_start(); 
-// Bài 6.1 - Trang chủ: hiển thị sản phẩm + lọc theo công ty
+/**
+ * index.php  –  Trang chủ dành cho Khách Hàng
+ * Admin KHÔNG có link truy cập từ đây → vào qua admin_login.php
+ */
+session_start();
 include("classtmdt/clskhachhang.php");
 $p = new khachhang();
 
-// Lọc theo công ty nếu có
-$idcty = isset($_GET['idcty']) ? $_GET['idcty'] : '';
-
+$idcty   = isset($_GET['idcty']) ? $_GET['idcty'] : '';
 $sanpham = $p->XemDSSanPham($idcty);
 $congty  = $p->XemDSCongTy();
 ?>
@@ -23,11 +24,14 @@ $congty  = $p->XemDSCongTy();
 
     <header>
         <h1>WEBSITE BÁN ĐIỆN THOẠI</h1>
-        <a href="admin/admin.php">➕ THÊM SẢN PHẨM</a>
-        <?php if (isset($_SESSION['login'])): ?>
+
+        <?php if (isset($_SESSION['login']) && $_SESSION['login'] === true): ?>
+            <!-- Khách hàng đã đăng nhập -->
+            <span style="font-size:13px;color:#ecf0f1;">👤 <?= htmlspecialchars($_SESSION['ten']) ?></span>
             <a href="giohang.php">🛒 Giỏ hàng</a>
             <a href="logout.php">Đăng xuất</a>
         <?php else: ?>
+            <!-- Chưa đăng nhập -->
             <a href="login.php">Đăng nhập</a>
             <a href="dangky.php">Đăng ký</a>
         <?php endif; ?>
@@ -35,25 +39,25 @@ $congty  = $p->XemDSCongTy();
 
     <div class="main">
 
-        <!-- MENU TRÁI: danh sách công ty -->
+        <!-- MENU TRÁI: lọc theo hãng -->
         <aside class="menu">
             <h3>HÃNG</h3>
             <ul>
-                <li><?php $active = ($idcty == '') ? 'active' : ''; ?>
-                    <a href="index.php" class="<?= $active ?>">Tất cả</a>
+                <li>
+                    <a href="index.php" <?= $idcty == '' ? 'class="active"' : '' ?>>Tất cả</a>
                 </li>
                 <?php foreach ($congty as $ct): ?>
                 <li>
                     <a href="index.php?idcty=<?= $ct['idcty'] ?>"
-                       <?= $idcty==$ct['idcty'] ? 'class="active"' : '' ?>>
-                        <?= $ct['tencty'] ?>
+                       <?= $idcty == $ct['idcty'] ? 'class="active"' : '' ?>>
+                        <?= htmlspecialchars($ct['tencty']) ?>
                     </a>
                 </li>
                 <?php endforeach; ?>
             </ul>
         </aside>
 
-        <!-- NỘI DUNG: danh sách sản phẩm -->
+        <!-- DANH SÁCH SẢN PHẨM -->
         <div class="noidung">
             <h3>SẢN PHẨM</h3>
 
@@ -64,9 +68,9 @@ $congty  = $p->XemDSCongTy();
                 <div class="sanpham">
                     <a href="chitietsanpham.php?idsp=<?= $sp['idsp'] ?>">
                         <div class="hinh">
-                            <img src="img/<?= $sp['hinh'] ?>" alt="<?= $sp['tensp'] ?>">
+                            <img src="img/<?= htmlspecialchars($sp['hinh']) ?>" alt="<?= htmlspecialchars($sp['tensp']) ?>">
                         </div>
-                        <div class="tensp"><?= $sp['tensp'] ?></div>
+                        <div class="tensp"><?= htmlspecialchars($sp['tensp']) ?></div>
                         <div class="gia">Giá: <?= number_format($sp['gia'],0,',','.') ?> USD</div>
                     </a>
                 </div>
@@ -74,13 +78,13 @@ $congty  = $p->XemDSCongTy();
                 <div style="clear:both;"></div>
             <?php endif; ?>
 
-        </div><!-- end noidung -->
-    </div><!-- end main -->
+        </div>
+    </div>
 
     <footer>
-        <a href="index.php">Footer Website - Bán Điện Thoại © 2024</a>
+        <a href="index.php">Footer Website – Bán Điện Thoại © 2024</a>
     </footer>
 
-</div><!-- end container -->
+</div>
 </body>
 </html>

@@ -58,8 +58,12 @@ foreach ($lichsu as $row) {
 .don-hang {
     border: 1px solid #ccc;
     border-radius: 6px;
-    margin: 15px 0;
+    margin: 15px auto;
     overflow: hidden;
+
+    width: 100%;          /* full ngang */
+    max-width: 800px;     /* cố định đẹp */
+    box-sizing: border-box;
 }
 .don-hang .don-header {
     background: #eee;
