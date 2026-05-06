@@ -1,0 +1,233 @@
+/* ============================================
+   STYLE.CSS - Website Bán Điện Thoại
+   ============================================ */
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+/* Khung chứa toàn bộ trang */
+.container {
+    width: 1000px;
+    margin: auto;
+    background: white;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: #ccc;
+    text-align: center;
+    padding: 15px;
+    overflow: hidden;
+}
+header h1 { margin: 0 0 8px 0; font-size: 22px; }
+header a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 5px 10px;
+    background: #aaa;
+    border-radius: 4px;
+}
+header a:hover { background: #999; }
+
+/* ===== LAYOUT CHÍNH ===== */
+.main {
+    display: flex;
+    min-height: 450px;
+}
+
+/* ===== MENU TRÁI ===== */
+.menu {
+    width: 180px;
+    background: #eee;
+    padding: 10px;
+    flex-shrink: 0;
+}
+.menu h3 { margin: 0 0 10px; font-size: 14px; color: #555; }
+.menu ul { list-style: none; padding: 0; margin: 0; }
+.menu li { margin: 5px 0; }
+.menu a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding: 6px 8px;
+    border-radius: 3px;
+}
+.menu a:hover { background: #ddd; }
+.menu a.active { background: #ccc; font-weight: bold; }
+
+/* ===== NỘI DUNG ===== */
+.noidung {
+    flex: 1;
+    padding: 10px;
+    overflow: hidden;
+}
+.noidung h3 { text-align: center; margin-top: 0; }
+
+/* ===== CARD SẢN PHẨM (theo sách) ===== */
+.sanpham {
+    float: left;
+    min-height: 200px;
+    width: 190px;
+    border: 1px solid #900;
+    margin: 10px 0 10px 10px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.sanpham:hover { border-color: #c00; background: #fff8f8; }
+.sanpham a { text-decoration: none; }
+
+.sanpham .hinh {
+    float: left;
+    height: 150px;
+    width: 150px;
+}
+.sanpham .hinh img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+.sanpham .tensp {
+    float: left;
+    width: 150px;
+    font-weight: bolder;
+    color: #00F;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 13px;
+}
+.sanpham .gia {
+    float: left;
+    width: 150px;
+    font-weight: bolder;
+    color: #F00;
+    text-align: center;
+    padding-top: 5px;
+    font-style: italic;
+    font-size: 13px;
+}
+
+/* ===== CHI TIẾT SẢN PHẨM ===== */
+table.chitetiet {
+    width: 500px;
+    border-collapse: collapse;
+    margin: 10px auto;
+}
+table.chitetiet td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    vertical-align: middle;
+}
+table.chitetiet th {
+    background: #eee;
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* ===== GIỎ HÀNG ===== */
+table.giohang {
+    width: 800px;
+    border-collapse: collapse;
+    margin: 10px auto;
+}
+table.giohang td, table.giohang th {
+    border: 1px solid #ccc;
+    padding: 7px;
+    text-align: center;
+}
+table.giohang th { background: #eee; }
+table.giohang tfoot td { font-weight: bold; background: #f9f9f9; }
+
+/* ===== FORM ===== */
+.form-wrap {
+    width: 480px;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+.form-wrap h2 { text-align: center; margin-top: 0; }
+.form-wrap label { display: block; margin-top: 10px; font-weight: bold; }
+.form-wrap input[type=text],
+.form-wrap input[type=password],
+.form-wrap input[type=email],
+.form-wrap textarea,
+.form-wrap select {
+    width: 100%;
+    padding: 7px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-wrap button, .form-wrap input[type=submit] {
+    margin-top: 14px;
+    width: 100%;
+    padding: 9px;
+    background: #555;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.form-wrap button:hover, .form-wrap input[type=submit]:hover { background: #333; }
+.form-wrap .link-bottom { text-align: center; margin-top: 10px; }
+.form-wrap .link-bottom a { color: #333; }
+
+/* Nút inline */
+.btn {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #555;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    margin: 2px;
+}
+.btn:hover { background: #333; }
+.btn-red { background: #c00; }
+.btn-red:hover { background: #900; }
+
+/* Thông báo */
+.msg-ok  { color: green; font-weight: bold; }
+.msg-err { color: red;   font-weight: bold; }
+
+/* ===== FOOTER ===== */
+footer {
+    background: #ccc;
+    text-align: center;
+    padding: 15px;
+    clear: both;
+    margin-top: 10px;
+}
+footer a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+/* ===== ADMIN ===== */
+table.admin-table {
+    width: 90%;
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+table.admin-table th, table.admin-table td {
+    border: 1px solid #ccc;
+    padding: 7px 10px;
+    text-align: left;
+}
+table.admin-table th { background: #ddd; }
+table.admin-table tr:nth-child(even) { background: #f9f9f9; }
